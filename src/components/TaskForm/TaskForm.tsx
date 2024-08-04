@@ -32,7 +32,10 @@ const TaskForm: React.FC<{ handleForm: () => void; showForm: boolean }> = ({ han
         const { title, status, priority, deadline, description } = taskData
 
         try {
-            createTask({ title, status, priority, deadline: new Date(deadline), description })
+            createTask({
+                title, status, priority, deadline: new Date(deadline), description,
+                createdAt: new Date()
+            })
             setTaskData({ title: '', status: '', priority: '', deadline: '', description: '' })
             toast.success('Task created successfully!')
         } catch (error) {
